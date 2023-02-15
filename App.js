@@ -14,11 +14,15 @@ import CFK from './src/Components/CFK';
 function StackNavigation() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="CFK" component={CFK} options={{
+      <Stack.Screen name="CFK" component={CFK} 
 
-        headerShown: false,
+        options={{
+        
+          headerShown: false,
 
-      }}/>
+        }}
+      
+      />
       <Stack.Screen name="Calcular" component={Calcular} />
     </Stack.Navigator>
   );
@@ -34,12 +38,12 @@ function BottomTab() {
             return <Text style={{color: color, fontSize: size}}> °C </Text>
           },
           tabBarShowLabel: false,
-          title: "Celsius"
+          title: "Celsius",
         }}
 
       />
       <Tab.Screen name="°F" component={StackNavigation} 
-      
+        initialParams={{ temperatureUnit: 'F' }}
         options={{
           tabBarIcon: ({ color, size }) => {
             return <Text style={{color: color, fontSize: size}}> °F </Text>
@@ -50,7 +54,7 @@ function BottomTab() {
         
       />
       <Tab.Screen name="K" component={StackNavigation} 
-      
+        initialParams={{ temperatureUnit: 'K' }}
         options={{
           tabBarIcon: ({ color, size }) => {
             return <Text style={{color: color, fontSize: size}}> K </Text>
