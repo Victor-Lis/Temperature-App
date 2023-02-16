@@ -23,7 +23,7 @@ export default function Fahrenheit() {
 
           <TouchableOpacity style={styles.row} onPress={() => navigate.navigate("CalcularFahrenheit", {temperatureUnit: "K"})}>
 
-            <Text style={styles.rowText}> K </Text>
+            <Text style={styles.rowText}>  K </Text>
             <Feather style={styles.rowArrow} name='arrow-right'/>
             <Text style={styles.rowText}> °F </Text>
 

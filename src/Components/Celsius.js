@@ -30,7 +30,7 @@ export default function Celsius() {
           
           >
 
-            <Text style={styles.rowText}> K </Text>
+            <Text style={styles.rowText}>  K </Text>
             <Feather style={styles.rowArrow} name='arrow-right'/>
             <Text style={styles.rowText}> °C </Text>
 

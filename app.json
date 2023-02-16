@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "temperatura-app",
+    "name": "Temperatura App",
     "slug": "temperatura-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,10 +24,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "dev_victor.temperatura_app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ce7985f5-4898-459c-ab9b-f69df22965db"
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, TextInput, StyleSheet } from 'react-native';
 
 import { useNavigation, TabActions } from '@react-navigation/native';
 
@@ -7,25 +7,30 @@ export default function CalcularCelsius({route}) {
 
   const navigation = useNavigation()
 
-  const jumpToAction = TabActions.jumpTo('°C');
-
   const [temperatureUnit, setTemperatureUnit] = useState(route.params?.temperatureUnit)
 
-  useEffect(() => {
-
-    
-
-  }, [temperatureUnit])
+  const [value, setValue] = useState("")
 
  return (
    <View style={styles.container}>
 
-        <TouchableOpacity style={styles.goBack} onPress={() => navigation.navigate("Celsius")}>
+            <View style={styles.row}>
+                
+                <Text style={{color: "red", fontSize: 20}}> {temperatureUnit == "F" ? `°${temperatureUnit}` : ` ${temperatureUnit}`} </Text>
+                <TextInput style={styles.input} onChangeText={setValue} value={value} maxLength={7} keyboardType="numeric"/>
 
-            <Text style={{color: "red", fontSize: 22.5}}> Voltar </Text>
+            </View>
 
-        </TouchableOpacity>
-        <Text> {`°${temperatureUnit.toUpperCase()}`} </Text>
+            {value != "" &&
+            
+              <View style={styles.row}>
+
+                <Text style={{color: "blue", fontSize: 20}}> °C </Text>
+                <Text style={styles.input}> {temperatureUnit == "F" ? ((value - 32) / 1.8).toFixed(3) : (value-273.15).toFixed(3)} </Text>
+
+              </View>
+            
+            }
 
    </View>
   );
@@ -36,20 +41,27 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     flexDirection: "column"
   },
-  goBack: {
+  row: {
 
-    paddingHorizontal: 20,
-    paddingVertical: 5,
-    backgroundColor: "#f6f6f6",
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    flexDirection: "row",
     alignItems: "center",
-    elevation: 2,
-    borderBottomEndRadius: 10,
-    borderBottomStartRadius: 10,
-    borderColor: "#000",
-    marginBottom: "50%"
+    justifyContent: "flex-start",
+    backgroundColor: "#f6f6f6",
+    borderRadius: 20,
+    margin: 10, 
+    minWidth: 100,
+    elevation: 2
+
+  }, 
+  input: {
+
+    width: "20%",
+    marginHorizontal: 5,
 
   }
 })
