@@ -8,22 +8,44 @@ const Tab = createBottomTabNavigator();
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
-import Calcular from './src/Components/Calcular';
-import CFK from './src/Components/CFK';
+import Celsius from './src/Components/Celsius';
+import Fahrenheit from './src/Components/Fahrenheit';
+import Kelvin from './src/Components/Kelvin';
+
+import CalcularCelsius from './src/Components/CalcularCelsius';
+import CalcularFahrenheit from './src/Components/CalcularFahrenheit';
+import CalcularKelvin from './src/Components/CalcularKelvin';
 
 function StackNavigation() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="CFK" component={CFK} 
-
-        options={{
-        
-          headerShown: false,
-
-        }}
-      
+      <Stack.Screen name="Celsius" component={Celsius} 
+        initialParams={{ temperatureUnit: 'C' }}
       />
-      <Stack.Screen name="Calcular" component={Calcular} />
+      <Stack.Screen name="Fahrenheit" component={Fahrenheit} 
+        initialParams={{ temperatureUnit: 'F' }}
+      />
+      <Stack.Screen name="Kelvin" component={Kelvin} 
+        initialParams={{ temperatureUnit: 'K' }}
+      />
+      <Stack.Screen name="CalcularCelsius" component={CalcularCelsius} 
+        options={{
+          title: "Calculando °C",
+          headerBackVisible: false
+        }}
+      />
+      <Stack.Screen name="CalcularFahrenheit" component={CalcularFahrenheit} 
+        options={{
+          title: "Calculando °F",
+          headerBackVisible: false
+        }}
+      />
+      <Stack.Screen name="CalcularKelvin" component={CalcularKelvin} 
+        options={{
+          title: "Calculando K",
+          headerBackVisible: false
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -37,12 +59,13 @@ function BottomTab() {
           tabBarIcon: ({ color, size }) => {
             return <Text style={{color: color, fontSize: size}}> °C </Text>
           },
+          headerShown: false,
           tabBarShowLabel: false,
           title: "Celsius",
         }}
 
       />
-      <Tab.Screen name="°F" component={StackNavigation} 
+      <Tab.Screen name="°F" component={Fahrenheit} 
         initialParams={{ temperatureUnit: 'F' }}
         options={{
           tabBarIcon: ({ color, size }) => {
@@ -53,7 +76,7 @@ function BottomTab() {
         }}
         
       />
-      <Tab.Screen name="K" component={StackNavigation} 
+      <Tab.Screen name="°K" component={Kelvin} 
         initialParams={{ temperatureUnit: 'K' }}
         options={{
           tabBarIcon: ({ color, size }) => {
