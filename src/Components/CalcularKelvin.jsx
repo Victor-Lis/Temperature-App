@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text, TextInput, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, TextInput, Text, StyleSheet } from 'react-native';
 
 import { useNavigation, TabActions } from '@react-navigation/native';
 
-export default function CalcularFahrenheit({route}) {
+export default function CalcularKelvin({route}) {
 
   const navigation = useNavigation()
 
@@ -16,7 +16,7 @@ export default function CalcularFahrenheit({route}) {
 
       <View style={styles.row}>
       
-          <Text style={{color: "red", fontSize: 20}}> {temperatureUnit == "C" ? `°${temperatureUnit}` : ` ${temperatureUnit}`} </Text>
+          <Text style={{color: "red", fontSize: 20}}> °{temperatureUnit} </Text>
           <TextInput style={styles.input} onChangeText={setValue} value={value} maxLength={7} keyboardType="numeric"/>  
 
       </View>
@@ -25,8 +25,8 @@ export default function CalcularFahrenheit({route}) {
   
         <View style={styles.row}>
 
-          <Text style={{color: "blue", fontSize: 20}}> °F </Text>
-          <Text style={styles.input}> {temperatureUnit == "C" ? ((value * 1.8) + 32).toFixed(3) : (value * 9/5) - 459.67.toFixed(3)} </Text>
+          <Text style={{color: "blue", fontSize: 20}}> K </Text>
+          <Text style={styles.input}> {temperatureUnit == "C" ? ((Number(value)+273.15).toFixed(3)).replace(".",",") : ((((value - 32) * (5/9)) + 273.15).toFixed(3)).replace(".",",")} </Text>
 
         </View>
   
@@ -54,13 +54,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#f6f6f6",
     borderRadius: 20,
     margin: 10, 
-    minWidth: 100,
     elevation: 2
 
   }, 
   input: {
 
-    width: "20%",
+    width: "35%",
     marginHorizontal: 5,
 
   }

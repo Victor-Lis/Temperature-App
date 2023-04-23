@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
     },
     rowsArea: {
   
-      paddingHorizontal: "17%",
+      paddingHorizontal: "15%",
       borderColor: "#000",
-      elevation: 2,
-      borderRadius: 50
+      borderRadius: 50,
+      borderWidth: 0.5,
   
     },
     row: {

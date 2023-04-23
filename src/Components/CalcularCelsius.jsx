@@ -26,7 +26,7 @@ export default function CalcularCelsius({route}) {
               <View style={styles.row}>
 
                 <Text style={{color: "blue", fontSize: 20}}> °C </Text>
-                <Text style={styles.input}> {temperatureUnit == "F" ? ((value - 32) / 1.8).toFixed(3) : (value-273.15).toFixed(3)} </Text>
+                <Text style={styles.input}> {temperatureUnit == "F" ? (((value - 32) / 1.8).toFixed(3)).replace(".",",") : ((value-273.15).toFixed(3)).replace(".",",")} </Text>
 
               </View>
             
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   }, 
   input: {
 
-    width: "20%",
+    width: "35%",
     marginHorizontal: 5,
 
   }
