@@ -7,7 +7,7 @@ import Feather from 'react-native-vector-icons/Feather';
 
 export default function Fahrenheit() {
 
-    const navigate = useNavigation()
+  const navigate = useNavigation()
 
  return (
    <View style={styles.container}>
